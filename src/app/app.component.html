@@ -1,9 +1,5 @@
 <div class="container">
-  <form>
-    <p><input type="text" name="notetitle" class="form-control w-50" [(ngModel)]="notetitle"></p>
-    <p><textarea name="maintext" id="1" cols="30" rows="10" class="maintext" [(ngModel)]="maintext"></textarea></p>
-    <input type="button" value="Сохранить" (click)="submit()" class="btn btn-primary">
-  </form>
+  <app-note-form (noteAdd)="onAddNote($event)"></app-note-form>
   <div *ngFor="let number of notes; let i = index">
     <p>{{notes[i].id}}.{{notes[i].name}}</p>
     <p>{{notes[i].maintext}}</p>

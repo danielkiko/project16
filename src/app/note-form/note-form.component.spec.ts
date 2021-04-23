@@ -8,9 +8,9 @@ describe('NoteFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NoteFormComponent]
+      declarations: [ NoteFormComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

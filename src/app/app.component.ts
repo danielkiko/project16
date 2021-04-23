@@ -14,18 +14,8 @@ export class AppComponent {
   notes: Note[]=[];
   idnumber = 1;
 
-  submit() {
-    let note: Note = { id: this.idnumber++, name: this.notetitle, maintext: this.maintext, date: new Date() }
-    this.notes.push(note);
-    console.log(this.notes);
-    // console.log(this.notetitle);
-    // console.log(this.maintext);
-    // this.notetitle ='';
-    // this.maintext ='';
-    // console.log(this.date.getMonth()+1);
-    // console.log(this.date.getDate());
-    // console.log(this.date.getHours());
-    // console.log(this.date.getMinutes());
+  onAddNote(e: Note ) {
+    this.notes.push(e);
   }
   delete(index:number) {
     this.notes.splice(index,1);
