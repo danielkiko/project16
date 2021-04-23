@@ -1,9 +1,12 @@
 <div class="container">
   <app-note-form (noteAdd)="onAddNote($event)"></app-note-form>
-  <div *ngFor="let number of notes; let i = index">
-    <p>{{notes[i].id}}.{{notes[i].name}}</p>
+  <app-card-form *ngFor="let note of notes; let i = index"
+  [inputNote]="note"
+  (noteDelete)="onDeleteNote(i)"
+  (noteEdit)="onEditNote()">
+    <!-- <p>{{notes[i].id}}.{{notes[i].name}}</p>
     <p>{{notes[i].maintext}}</p>
     <p>{{notes[i].date|date:'medium'}}</p>
-    <input type="button" value="Удалить" (click)="delete(i)" class="btn btn-danger">
-  </div>
+    <input type="button" value="Удалить" (click)="delete(i)" class="btn btn-danger"> -->
+  </app-card-form>
 </div>

@@ -1,0 +1,12 @@
+<div *ngIf="status==false; else editblock">
+<p>{{inputNote.id}}.{{inputNote.name}}</p>
+<p>{{inputNote.maintext}}</p>
+<p>{{inputNote.date|date:"medium"}}</p>
+<input type="button" value="Удалить" (click)="onDeleteNote()" class="btn btn-danger">
+<p><input type="button" value="Редактировать" (click)="onEditNote()" class="btn btn-info"></p>
+</div>
+<ng-template #editblock>
+    <p><input type="text" name="notetitle" class="form-control w-50" [(ngModel)]="inputNote.name"></p>
+    <p><textarea name="maintext" id="1" cols="30" rows="10" class="maintext" [(ngModel)]="inputNote.maintext"></textarea></p>
+    <p><input type="button" value="Сохранить" (click)="onEditNote()" class="btn btn-info"></p>
+</ng-template>

@@ -5,11 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NoteFormComponent } from './note-form/note-form.component';
+import { NoteCardComponent } from './note-card/note-card.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoteFormComponent
+    NoteFormComponent,
+    NoteCardComponent
   ],
   imports: [
     BrowserModule,
