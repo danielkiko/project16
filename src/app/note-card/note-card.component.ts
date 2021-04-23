@@ -21,6 +21,7 @@ export class NoteCardComponent implements OnInit {
   }
   onEditNote() {
       this.status = !this.status;
+      if (this.status == false)
       this.noteEdit.emit();
   }
 

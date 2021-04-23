@@ -20,6 +20,6 @@ export class AppComponent {
     this.notes.splice(index,1);
   }
   onEditNote() {
-    
+    console.log(this.notes);
   }
 }
