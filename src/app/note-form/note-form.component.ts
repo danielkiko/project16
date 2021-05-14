@@ -18,7 +18,7 @@ export class NoteFormComponent implements OnInit {
 
   constructor() { }
   onAddNote() {
-    this.noteAdd.emit({ id: this.idnumber++, name: this.notetitle, maintext: this.maintext, date: new Date() });
+    this.noteAdd.emit({ name: this.notetitle, maintext: this.maintext, date: new Date() });
     this.notetitle = '';
     this.maintext = '';
   }

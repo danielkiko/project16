@@ -7,7 +7,7 @@ import { Note } from 'src/app/shared/interfaces/note.interface';
   providedIn: 'root'
 })
 export class HttpNoteService {
-routeAddress:'http://localhost:3000/Notes';
+
   constructor(private http: HttpClient) { }
 
   getNotes():Promise<any> {
@@ -17,5 +17,13 @@ routeAddress:'http://localhost:3000/Notes';
   }
   postNote(data: Note) {
     return this.http.post('http://localhost:3000/Notes', data).toPromise();
+  }
+
+  deleteNote(index: number){
+    return this.http.delete(`http://localhost:3000/Notes/`).toPromise();
+  }
+
+  updateNote(index: number, notebody){
+    return this.http.put(`http://localhost:3000/Notes/`,notebody).toPromise();
   }
 }

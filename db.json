@@ -2,25 +2,37 @@
   "Notes": [
     {
       "id": 1,
-      "name": "dani",
-      "maintext": "kiko",
-      "date": 123456
+      "date": "2021-05-14T13:21:49.550Z"
     },
-    [
-      {
-        "id": 1,
-        "name": "d",
-        "maintext": "dddd",
-        "date": "2021-05-13T19:39:38.116Z"
-      }
-    ],
-    [
-      {
-        "id": 1,
-        "name": "s",
-        "maintext": "sss",
-        "date": "2021-05-13T19:39:47.527Z"
-      }
-    ]
+    {
+      "id": 3,
+      "name": "",
+      "maintext": "",
+      "date": "2021-05-14T13:21:49.830Z"
+    },
+    {
+      "id": 4,
+      "name": "",
+      "maintext": "",
+      "date": "2021-05-14T13:21:49.942Z"
+    },
+    {
+      "id": 5,
+      "name": "",
+      "maintext": "",
+      "date": "2021-05-14T13:21:50.029Z"
+    },
+    {
+      "id": 7,
+      "name": "",
+      "maintext": "",
+      "date": "2021-05-14T13:21:50.229Z"
+    },
+    {
+      "id": 9,
+      "name": "asadsadsads",
+      "maintext": "asdas",
+      "date": "2021-05-14T13:22:10.749Z"
+    }
   ]
 }

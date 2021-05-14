@@ -13,6 +13,7 @@ import { NoteCardServiceService } from './shared/services/note-card-service.serv
 export class AppComponent {
   title = 'project11';
   notes: Note[];
+  Notebody: Note;
   constructor(private NoteCardService: NoteCardServiceService,
     private httpNoteService: HttpNoteService) {
 
@@ -22,7 +23,7 @@ export class AppComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     // this.notes = this.NoteCardService.notes;
-    // this.getData();
+    this.getData();
   }
 
 
@@ -30,15 +31,32 @@ export class AppComponent {
     this.NoteCardService.notes.push(e);
     this.notes = this.NoteCardService.notes;
     console.log(this.NoteCardService.notes);
+    try {
+      await this.httpNoteService.postNote(this.NoteCardService.notes[this.notes.length-1]);
+    } catch (err) {
+      console.log(err);
+    }
     console.log(this.getData());
     
   }
 
-  onDeleteNote(index: number) {
+  async onDeleteNote(index: number) {
     this.NoteCardService.notes.splice(index, 1);
+    try {
+      await this.httpNoteService.deleteNote(this.notes[index].id);
+    } catch (err) {
+      console.log(err);
+    }
+    this.getData();
   }
-  onEditNote() {
+  async onEditNote(index: number) {
     console.log(this.NoteCardService.notes);
+    this.Notebody = this.notes[index];
+    try {
+      await this.httpNoteService.updateNote(this.notes[index].id, this.Notebody);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async getData() {

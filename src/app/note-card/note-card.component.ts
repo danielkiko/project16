@@ -20,6 +20,7 @@ export class NoteCardComponent implements OnInit {
       this.noteDelete.emit();
   }
   onEditNote() {
+    this.inputNote.date= new Date;
       this.status = !this.status;
       if (this.status == false)
       this.noteEdit.emit();
