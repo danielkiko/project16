@@ -13,27 +13,35 @@ import { HttpNoteService } from './shared/services/http-note.service';
 export class AppComponent {
   title = 'project15';
   notes!: Note[];
-  
+
+  some: any[] = [
+    { id: 1, value: 'position1F' },
+    { id: 2, value: 'position2F' },
+    { id: 3, value: 'position3F' },
+    { id: 4, value: 'position4F' }
+  ]
   NoteForm!: FormGroup;
   constructor(private httpNoteService: HttpNoteService) {
 
+
+
   }
-  
+
 
   ngOnInit(): void {
-    
+
     this.getData();
   }
 
 
-   async onAddNote(e: Note) {
+  async onAddNote(e: Note) {
     try {
       await this.httpNoteService.postNote(e);
     } catch (err) {
       console.log(err);
     }
     this.getData();
-    
+
   }
 
   async onDeleteNote(index: number) {
@@ -44,7 +52,7 @@ export class AppComponent {
     }
     this.getData();
   }
-  async onEditNote(index: number, note:Note) {
+  async onEditNote(index: number, note: Note) {
     try {
       await this.httpNoteService.updateNote(index, note);
       this.getData();

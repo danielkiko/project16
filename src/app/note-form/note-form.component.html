@@ -1,17 +1,26 @@
 <form
 [formGroup]="NoteForm" 
 class= 'container-fluid'>
-    <p><input 
+    <div><input 
       type="text"
       name="notetitle"
       class="form-control w-100" 
-      formControlName="name"></p>
-    <p><textarea 
+      formControlName="name">
+    </div>
+    <div><textarea 
       name="maintext" 
       id="1"  
       cols="30" 
       rows="10" 
       class="w-100" 
-      formControlName="maintext"></textarea></p>
-    <input type="button" value="Сохранить" (click)="onAddNote()" class="btn btn-primary">
+      formControlName="maintext"></textarea>
+    </div>
+      <div>
+        <label for="type">Типы заметок</label>
+        <select class="form-control w-25 mb-5" name="types" id="type">
+        <option></option>
+      </select>
+    </div>
+      
+    <input type="button" value="Сохранить заметку" (click)="onAddNote()" class="btn btn-primary">
   </form>

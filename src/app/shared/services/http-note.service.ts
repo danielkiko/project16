@@ -26,4 +26,18 @@ export class HttpNoteService {
   updateNote(index: number, notebody){
     return this.http.put(`http://localhost:3000/Notes/${index}`,notebody).toPromise();
   }
+
+  getTypes():Promise<any> {
+    
+    return this.http.get('http://localhost:3000/Types').toPromise();
+    
+  }
+  postType(data: Note) {
+    return this.http.post('http://localhost:3000/Types', data).toPromise();
+  }
+
+  deleteType(index: number){
+    return this.http.delete(`http://localhost:3000/Types/${index}`).toPromise();
+  }
+
 }
