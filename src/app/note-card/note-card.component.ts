@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Note } from 'app/shared/interfaces/note.interface';
+import { Note } from '../shared/interfaces/note.interface';
+
 
 
 
@@ -10,7 +11,7 @@ import { Note } from 'app/shared/interfaces/note.interface';
   styleUrls: ['./note-card.component.css']
 })
 export class NoteCardComponent implements OnInit {
-    @Input() inputNote: Note;
+  @Input() inputNote!: Note;
   @Output() noteDelete = new EventEmitter<number>();
   @Output() noteEdit = new EventEmitter<Note>();
   status = false;
@@ -24,6 +25,10 @@ export class NoteCardComponent implements OnInit {
       date: Date
     }
     this.NoteForm = this.fb.group(controls);
+
+    if (this.inputNote) {
+      this.NoteForm.patchValue(this.inputNote);
+    }
   }
   onDeleteNote() {
       this.noteDelete.emit(this.inputNote.id);

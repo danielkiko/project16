@@ -20,10 +20,10 @@ export class HttpNoteService {
   }
 
   deleteNote(index: number){
-    return this.http.delete(`http://localhost:3000/Notes/`).toPromise();
+    return this.http.delete(`http://localhost:3000/Notes/${index}`).toPromise();
   }
 
   updateNote(index: number, notebody){
-    return this.http.put(`http://localhost:3000/Notes/`,notebody).toPromise();
+    return this.http.put(`http://localhost:3000/Notes/${index}`,notebody).toPromise();
   }
 }

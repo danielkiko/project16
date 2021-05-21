@@ -1,9 +1,9 @@
 import { getMissingNgModuleMetadataErrorData } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Note } from './shared/interfaces/note.interface';
 import { HttpNoteService } from './shared/services/http-note.service';
-import { NoteCardServiceService } from './shared/services/note-card-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -11,49 +11,43 @@ import { NoteCardServiceService } from './shared/services/note-card-service.serv
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'project11';
-  notes: Note[];
-  Notebody: Note;
-  constructor(private NoteCardService: NoteCardServiceService,
-    private httpNoteService: HttpNoteService) {
+  title = 'project15';
+  notes!: Note[];
+  
+  NoteForm!: FormGroup;
+  constructor(private httpNoteService: HttpNoteService) {
 
   }
+  
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    // this.notes = this.NoteCardService.notes;
+    
     this.getData();
   }
 
 
    async onAddNote(e: Note) {
-    this.NoteCardService.notes.push(e);
-    this.notes = this.NoteCardService.notes;
-    console.log(this.NoteCardService.notes);
     try {
-      await this.httpNoteService.postNote(this.NoteCardService.notes[this.notes.length-1]);
+      await this.httpNoteService.postNote(e);
     } catch (err) {
       console.log(err);
     }
-    console.log(this.getData());
+    this.getData();
     
   }
 
   async onDeleteNote(index: number) {
-    this.NoteCardService.notes.splice(index, 1);
     try {
-      await this.httpNoteService.deleteNote(this.notes[index].id);
+      await this.httpNoteService.deleteNote(index);
     } catch (err) {
       console.log(err);
     }
     this.getData();
   }
-  async onEditNote(index: number) {
-    console.log(this.NoteCardService.notes);
-    this.Notebody = this.notes[index];
+  async onEditNote(index: number, note:Note) {
     try {
-      await this.httpNoteService.updateNote(this.notes[index].id, this.Notebody);
+      await this.httpNoteService.updateNote(index, note);
+      this.getData();
     } catch (err) {
       console.log(err);
     }
