@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { provideRoutes } from '@angular/router';
 import { Note } from 'src/app/shared/interfaces/note.interface';
+import { Type } from '../interfaces/type.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class HttpNoteService {
     return this.http.get('http://localhost:3000/Types').toPromise();
     
   }
-  postType(data: Note) {
+  postType(data: Type) {
     return this.http.post('http://localhost:3000/Types', data).toPromise();
   }
 

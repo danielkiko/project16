@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NoteFormComponent } from '../note-form/note-form.component';
 import { Note } from '../shared/interfaces/note.interface';
+import { Type } from '../shared/interfaces/type.interface';
 
 
 
@@ -15,7 +17,8 @@ export class NoteCardComponent implements OnInit {
   @Output() noteDelete = new EventEmitter<number>();
   @Output() noteEdit = new EventEmitter<Note>();
   status = false;
-  NoteForm!: FormGroup
+  NoteForm!: FormGroup;
+  typename: Type;
   constructor(private fb: FormBuilder) { }
   
   ngOnInit(): void {
@@ -38,6 +41,10 @@ export class NoteCardComponent implements OnInit {
       this.status = !this.status;
       if (this.status == false)
       this.noteEdit.emit(note);
+  }
+  async onAddType(e:Type)
+  {
+    ;
   }
 
 }

@@ -1,7 +1,9 @@
 import { getMissingNgModuleMetadataErrorData } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NoteFormComponent } from './note-form/note-form.component';
 import { Note } from './shared/interfaces/note.interface';
+import { Type } from './shared/interfaces/type.interface';
 import { HttpNoteService } from './shared/services/http-note.service';
 
 
@@ -13,6 +15,7 @@ import { HttpNoteService } from './shared/services/http-note.service';
 export class AppComponent {
   title = 'project15';
   notes!: Note[];
+  types!: Type[];
 
   some: any[] = [
     { id: 1, value: 'position1F' },
@@ -22,14 +25,10 @@ export class AppComponent {
   ]
   NoteForm!: FormGroup;
   constructor(private httpNoteService: HttpNoteService) {
-
-
-
   }
 
 
   ngOnInit(): void {
-
     this.getData();
   }
 
@@ -43,10 +42,26 @@ export class AppComponent {
     this.getData();
 
   }
+  async onAddType(e:Type) {
+    try {
+      await this.httpNoteService.postType(e);
+    } catch (err) {
+      console.log(err);
+    }
+    this.getData();
+  }
 
   async onDeleteNote(index: number) {
     try {
       await this.httpNoteService.deleteNote(index);
+    } catch (err) {
+      console.log(err);
+    }
+    this.getData();
+  }
+  async onDeleteType(index: number) {
+    try {
+      await this.httpNoteService.deleteType(index);
     } catch (err) {
       console.log(err);
     }
@@ -63,7 +78,9 @@ export class AppComponent {
 
   async getData() {
     try {
-      this.notes = await this.httpNoteService.getNotes()
+      this.notes = await this.httpNoteService.getNotes();
+      this.types = await this.httpNoteService.getTypes();
+      
     } catch (err) {
       console.log(err);
     }
