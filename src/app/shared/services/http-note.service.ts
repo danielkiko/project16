@@ -33,6 +33,9 @@ export class HttpNoteService {
     return this.http.get('http://localhost:3000/Types').toPromise();
     
   }
+  getType(id:number):Promise<any>{
+    return this.http.get(`http://localhost:3000/Types/${id}`).toPromise();
+  }
   postType(data: Type) {
     return this.http.post('http://localhost:3000/Types', data).toPromise();
   }

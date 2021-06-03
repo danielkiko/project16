@@ -29,10 +29,11 @@ export class NoteFormComponent implements OnInit {
     const controls = {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       maintext: [null, [Validators.required, Validators.maxLength(100)]],
-      date: new Date
+      date: new Date,
+      type: [null, [Validators.required, Validators.maxLength(100)]]
     }
     const typecontrols = {
-      typename: [null, [Validators.required, Validators.maxLength(100)]]
+      name: [null, [Validators.required, Validators.maxLength(100)]]
     }
     this.TypeForm = this.fb.group(typecontrols);
     this.NoteForm = this.fb.group(controls);
@@ -40,8 +41,9 @@ export class NoteFormComponent implements OnInit {
   }
   onAddNote() {
     this.NoteForm.controls['date'].setValue(new Date);
+    this.NoteForm.controls['type'].setValue(`http://localhost:3000/Types/${this.typecontainer.id}`);
     const note = this.NoteForm.value;
-    const type = this.typecontainer;
+    console.log(this.typecontainer);
     this.noteAdd.emit(note);
   }
   onEdittype() {
@@ -55,7 +57,7 @@ export class NoteFormComponent implements OnInit {
   }
   onDeletetype() {
     this.typedelete.emit(this.typecontainer.id);
-    
+    this.typecontainer = null;
   }
  
 }

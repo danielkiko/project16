@@ -8,7 +8,7 @@
     <label for="type">Типы заметок</label>
     <div>
       <select [(ngModel)]="typecontainer"  class="form-control w-25 mb-5" name="types" id="type">
-        <option *ngFor="let type of typearr" [ngValue]="type"> {{type.typename}} </option>
+        <option *ngFor="let type of typearr" [ngValue]="type"> {{type.name}} </option>
       </select>
     </div>
     <input type="button" value="добавление типа" (click)="onEdittype()" class="btn btn-info mt-1">
@@ -18,7 +18,7 @@
   <ng-template #editblock>
     <form [formGroup]="TypeForm">
       <div class="mt-5 border border-primary rounded shadow-lg p-3 mb-5 bg-white rounded">
-        <input type="text" name="notetitle" class="form-control w-50" formControlName="typename">
+        <input type="text" name="notetitle" class="form-control w-50" formControlName="name">
         <input type="button" value="Сохранить" (click)="onAddtype()" class="btn btn-info mt-1">
       </div>
     </form>

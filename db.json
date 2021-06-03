@@ -1,13 +1,44 @@
 {
-  "Notes": [],
-  "Types": [
+  "Notes": [
     {
-      "typename": "ddd",
+      "name": "dd",
+      "maintext": "dd",
+      "date": "2021-06-03T16:16:27.495Z",
+      "type": "http://localhost:3000/Types/1",
       "id": 1
     },
     {
-      "typename": null,
+      "name": "f",
+      "maintext": "f",
+      "date": "2021-06-03T16:17:08.944Z",
+      "type": "http://localhost:3000/Types/3",
       "id": 2
+    }
+  ],
+  "Types": [
+    {
+      "name": "zxczxczxczxczxczxczxczxc",
+      "id": 1
+    },
+    {
+      "name": "zxczxasdasfasf",
+      "id": 3
+    },
+    {
+      "name": "zxczxasdasfasfzxczxc",
+      "id": 4
+    },
+    {
+      "name": "asdas",
+      "id": 5
+    },
+    {
+      "name": "asdas",
+      "id": 6
+    },
+    {
+      "name": "asdasasdasdas",
+      "id": 7
     }
   ]
 }
