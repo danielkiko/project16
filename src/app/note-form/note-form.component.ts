@@ -5,6 +5,7 @@ import { HttpNoteService } from 'src/app/shared/services/http-note.service';
 import { AppComponent } from '../app.component';
 import { Type } from '../shared/interfaces/type.interface';
 
+
 @Component({
   selector: 'app-note-form',
   templateUrl: './note-form.component.html',
@@ -20,11 +21,13 @@ export class NoteFormComponent implements OnInit {
   @Output() typedelete = new EventEmitter<number>();
   type: Type;
   status = false;
+  typecontainer: Type;
 
 
   constructor(private fb: FormBuilder, private httpNoteService: HttpNoteService) { }
   onAddNote() {
     const note = this.NoteForm.value;
+    const type = this.typecontainer;
     this.noteAdd.emit(note);
   }
   onEdittype() {
@@ -37,8 +40,8 @@ export class NoteFormComponent implements OnInit {
     console.log(this.typearr);
   }
   onDeletetype() {
-    // this.typedelete.emit(this.type.id);
-    console.log(this.TypeForm.value);
+    this.typedelete.emit(this.typecontainer.id);
+    
   }
   ngOnInit(): void {
     const controls = {

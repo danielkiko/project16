@@ -3,13 +3,14 @@
   </div>
   <div><textarea name="maintext" id="1" cols="30" rows="10" class="w-100" formControlName="maintext"></textarea>
   </div>
+</form>
   <div *ngIf="status==false; else editblock">
     <label for="type">Типы заметок</label>
-    <form [formGroup]="TypeForm">
-      <select class="form-control w-25 mb-5" name="types" id="type">
+    <div>
+      <select [(ngModel)]="typecontainer"  class="form-control w-25 mb-5" name="types" id="type">
         <option *ngFor="let type of typearr" [ngValue]="type"> {{type.typename}} </option>
       </select>
-    </form>
+    </div>
     <input type="button" value="добавление типа" (click)="onEdittype()" class="btn btn-info mt-1">
     <input type="button" value="удаление типа" (click)="onDeletetype()" class="btn btn-danger mt-1">
   </div>
@@ -24,4 +25,3 @@
   </ng-template>
 
   <input type="button" value="Сохранить заметку" (click)="onAddNote()" class="btn btn-primary">
-</form>

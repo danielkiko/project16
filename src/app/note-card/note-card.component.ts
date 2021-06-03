@@ -18,7 +18,7 @@ export class NoteCardComponent implements OnInit {
   @Output() noteEdit = new EventEmitter<Note>();
   status = false;
   NoteForm!: FormGroup;
-  typename: Type;
+  type: Type;
   constructor(private fb: FormBuilder) { }
   
   ngOnInit(): void {

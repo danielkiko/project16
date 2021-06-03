@@ -1,29 +1,4 @@
 {
   "Notes": [],
-  "Types": [
-    {
-      "typename": "яблоки",
-      "id": 1
-    },
-    {
-      "typename": "яблоки2",
-      "id": 2
-    },
-    {
-      "typename": "дыни",
-      "id": 3
-    },
-    {
-      "typename": "имбирь",
-      "id": 4
-    },
-    {
-      "typename": ",,,",
-      "id": 5
-    },
-    {
-      "typename": "ddddd",
-      "id": 6
-    }
-  ]
+  "Types": []
 }

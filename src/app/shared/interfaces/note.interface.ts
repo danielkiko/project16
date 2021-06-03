@@ -3,4 +3,5 @@ export interface Note {
     name: string;
     maintext: string;
     date: Date;
+    type: string;
 }

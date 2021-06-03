@@ -17,12 +17,6 @@ export class AppComponent {
   notes!: Note[];
   types!: Type[];
 
-  some: any[] = [
-    { id: 1, value: 'position1F' },
-    { id: 2, value: 'position2F' },
-    { id: 3, value: 'position3F' },
-    { id: 4, value: 'position4F' }
-  ]
   NoteForm!: FormGroup;
   constructor(private httpNoteService: HttpNoteService) {
   }
