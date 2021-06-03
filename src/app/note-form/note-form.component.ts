@@ -47,7 +47,7 @@ export class NoteFormComponent implements OnInit {
     const controls = {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       maintext: [null, [Validators.required, Validators.maxLength(100)]],
-      date: Date
+      date: new Date
     }
     const typecontrols = {
       typename: [null, [Validators.required, Validators.maxLength(100)]]
