@@ -3,6 +3,7 @@
     <p>{{inputNote.id}}.{{inputNote.name}}</p>
     <p>{{inputNote.maintext}}</p>
     <p>{{inputNote.date|date:'dd.MM.yy H:mm'}}</p>
+    <p>{{inputNote.editdate|date:'dd.MM.yy H:mm'}}</p>
     <p>тип:</p>
     <input type="button" value="Удалить" (click)="onDeleteNote()" class="btn btn-danger mt-1">
     <div><input type="button" value="Редактировать" (click)="onEditNote()" class="btn btn-info mt-1"></div>

@@ -25,7 +25,8 @@ export class NoteCardComponent implements OnInit {
     const controls = {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       maintext: [null, [Validators.required, Validators.maxLength(100)]],
-      date: new Date
+      date: Date,
+      editdate: Date
     }
     this.NoteForm = this.fb.group(controls);
 
@@ -37,7 +38,7 @@ export class NoteCardComponent implements OnInit {
       this.noteDelete.emit(this.inputNote.id);
   }
   onEditNote() {
-    this.NoteForm.controls['date'].setValue(new Date);
+    this.NoteForm.controls['editdate'].setValue(new Date);
     const note = this.NoteForm.value;
       this.status = !this.status;
       if (this.status == false)
