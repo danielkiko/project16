@@ -25,7 +25,21 @@ export class NoteFormComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private httpNoteService: HttpNoteService) { }
+   ngOnInit(): void {
+    const controls = {
+      name: [null, [Validators.required, Validators.maxLength(100)]],
+      maintext: [null, [Validators.required, Validators.maxLength(100)]],
+      date: new Date
+    }
+    const typecontrols = {
+      typename: [null, [Validators.required, Validators.maxLength(100)]]
+    }
+    this.TypeForm = this.fb.group(typecontrols);
+    this.NoteForm = this.fb.group(controls);
+
+  }
   onAddNote() {
+    this.NoteForm.controls['date'].setValue(new Date);
     const note = this.NoteForm.value;
     const type = this.typecontainer;
     this.noteAdd.emit(note);
@@ -43,17 +57,5 @@ export class NoteFormComponent implements OnInit {
     this.typedelete.emit(this.typecontainer.id);
     
   }
-  ngOnInit(): void {
-    const controls = {
-      name: [null, [Validators.required, Validators.maxLength(100)]],
-      maintext: [null, [Validators.required, Validators.maxLength(100)]],
-      date: new Date
-    }
-    const typecontrols = {
-      typename: [null, [Validators.required, Validators.maxLength(100)]]
-    }
-    this.TypeForm = this.fb.group(typecontrols);
-    this.NoteForm = this.fb.group(controls);
-
-  }
+ 
 }
