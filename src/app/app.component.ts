@@ -16,7 +16,8 @@ export class AppComponent {
   title = 'project15';
   notes!: Note[];
   types!: Type[];
-
+  // typename:string;
+  // typeindex:number;
   NoteForm!: FormGroup;
   constructor(private httpNoteService: HttpNoteService) {
   }
@@ -34,8 +35,15 @@ export class AppComponent {
       console.log(err);
     }
     this.getData();
-
   }
+
+  // onSelectType(index:number)
+  // {
+  //   this.typeindex=this.types.findIndex(x=>x.id == index);
+  //   this.typename = this.types[this.typeindex].name
+  //   console.log(this.types[this.typeindex].name)
+  // }
+
   async onAddType(e:Type) {
     try {
       await this.httpNoteService.postType(e);

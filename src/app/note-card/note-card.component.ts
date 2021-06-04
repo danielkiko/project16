@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteFormComponent } from '../note-form/note-form.component';
 import { Note } from '../shared/interfaces/note.interface';
 import { Type } from '../shared/interfaces/type.interface';
+import { HttpNoteService } from '../shared/services/http-note.service';
 
 
 
@@ -19,34 +20,50 @@ export class NoteCardComponent implements OnInit {
   status = false;
   NoteForm!: FormGroup;
   type: Type;
-  constructor(private fb: FormBuilder) { }
-  
+  types: Type[];
+  typecontainer: Type;
+  typeindex: number;
+  linkedtype!: Type;
+  typename: string;
+  constructor(private fb: FormBuilder, private httpNoteservice: HttpNoteService) { }
+
   ngOnInit(): void {
     const controls = {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       maintext: [null, [Validators.required, Validators.maxLength(100)]],
       date: Date,
-      editdate: Date
+      editdate: Date,
+      type: [null, [Validators.required, Validators.maxLength(100)]],
     }
+    this.getData();
     this.NoteForm = this.fb.group(controls);
-
     if (this.inputNote) {
       this.NoteForm.patchValue(this.inputNote);
     }
+    
   }
   onDeleteNote() {
-      this.noteDelete.emit(this.inputNote.id);
+    this.noteDelete.emit(this.inputNote.id);
   }
-  onEditNote() {
-    this.NoteForm.controls['editdate'].setValue(new Date);
-    const note = this.NoteForm.value;
-      this.status = !this.status;
-      if (this.status == false)
+  async onEditNote() {
+    this.getData();
+    this.status = !this.status;
+    if (this.status == false) {
+      if (this.typecontainer == null)
+        this.typecontainer = this.types[0];
+      this.NoteForm.controls['editdate'].setValue(new Date);
+      this.NoteForm.controls['type'].setValue(this.typecontainer.id);
+      const note = this.NoteForm.value;
       this.noteEdit.emit(note);
+    }
   }
-  async onAddType(e:Type)
-  {
-    ;
+  async getData() {
+    this.types = await this.httpNoteservice.getTypes();
+    this.gettypename(this.inputNote.type);
+  }
+  gettypename(index) {
+    this.typeindex = this.types.findIndex(x => x.id == index);
+    this.typename = this.types[this.typeindex].name;
   }
 
 }

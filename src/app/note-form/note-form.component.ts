@@ -19,12 +19,15 @@ export class NoteFormComponent implements OnInit {
   @Output() noteAdd = new EventEmitter<Note>();
   @Output() typeAdd = new EventEmitter<Type>();
   @Output() typedelete = new EventEmitter<number>();
+ 
   type: Type;
   status = false;
   typecontainer: Type;
+  linkedtype!: Type;
+  typename: string;
 
 
-  constructor(private fb: FormBuilder, private httpNoteService: HttpNoteService) { }
+  constructor(private fb: FormBuilder, private httpNoteservice: HttpNoteService) { }
    ngOnInit(): void {
     const controls = {
       name: [null, [Validators.required, Validators.maxLength(100)]],
@@ -37,14 +40,18 @@ export class NoteFormComponent implements OnInit {
     }
     this.TypeForm = this.fb.group(typecontrols);
     this.NoteForm = this.fb.group(controls);
+    
 
   }
-  onAddNote() {
+  async onAddNote() {
     this.NoteForm.controls['date'].setValue(new Date);
-    this.NoteForm.controls['type'].setValue(`http://localhost:3000/Types/${this.typecontainer.id}`);
+    if (this.typecontainer == null)
+    this.typecontainer = this.typearr[0];
+    this.NoteForm.controls['type'].setValue(this.typecontainer.id);
     const note = this.NoteForm.value;
     console.log(this.typecontainer);
     this.noteAdd.emit(note);
+    
   }
   onEdittype() {
     this.status = !this.status;
@@ -59,5 +66,7 @@ export class NoteFormComponent implements OnInit {
     this.typedelete.emit(this.typecontainer.id);
     this.typecontainer = null;
   }
+  
+  
  
 }

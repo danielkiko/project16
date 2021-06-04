@@ -1,17 +1,19 @@
 {
   "Notes": [
     {
-      "name": "dd",
-      "maintext": "dd",
-      "date": "2021-06-03T16:16:27.495Z",
-      "type": "http://localhost:3000/Types/1",
+      "name": "asdads",
+      "maintext": "zxczcxcxz",
+      "date": "2021-06-04T14:31:38.052Z",
+      "editdate": "2021-06-04T14:31:54.400Z",
+      "type": 6,
       "id": 1
     },
     {
-      "name": "f",
-      "maintext": "f",
-      "date": "2021-06-03T16:17:08.944Z",
-      "type": "http://localhost:3000/Types/3",
+      "name": "купить2",
+      "maintext": "что-то2",
+      "date": "2021-06-04T14:37:26.520Z",
+      "editdate": "2021-06-04T14:37:47.977Z",
+      "type": 4,
       "id": 2
     }
   ],
@@ -39,6 +41,10 @@
     {
       "name": "asdasasdasdas",
       "id": 7
+    },
+    {
+      "name": "покупки",
+      "id": 8
     }
   ]
 }

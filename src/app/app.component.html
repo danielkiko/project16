@@ -1,9 +1,9 @@
 <div class="container">
-  <app-note-form (noteAdd)="onAddNote($event)" (typeAdd)="onAddType($event)" (typedelete)="onDeleteType($event)"
+  <app-note-form (noteAdd)="onAddNote($event)" (typeAdd)="onAddType($event)"  (typedelete)="onDeleteType($event)"
     [typearr]="types"></app-note-form>
   <div class="row">
     <app-card-form class="col-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let note of notes" [inputNote]="note"
-      (noteDelete)="onDeleteNote($event)" (noteEdit)="onEditNote(note.id,$event)" (typeAdd)="onAddType($event)">
+      (noteDelete)="onDeleteNote($event)" (noteEdit)="onEditNote(note.id,$event)" (typeAdd)="onAddType($event)" [typename]="typename">
     </app-card-form>
   </div>
 </div>
