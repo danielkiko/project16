@@ -45,11 +45,11 @@ export class NoteFormComponent implements OnInit {
   }
   async onAddNote() {
     this.NoteForm.controls['date'].setValue(new Date);
-    if (this.typecontainer == null)
-    this.typecontainer = this.typearr[0];
-    this.NoteForm.controls['type'].setValue(this.typecontainer.id);
+    let typeid = this.TypeForm.controls['name'].value;
+    typeid = +typeid;
+    this.NoteForm.controls['type'].setValue(typeid);
     const note = this.NoteForm.value;
-    console.log(this.typecontainer);
+    console.log(this.NoteForm.value);
     this.noteAdd.emit(note);
     
   }
@@ -63,8 +63,9 @@ export class NoteFormComponent implements OnInit {
     console.log(this.typearr);
   }
   onDeletetype() {
-    this.typedelete.emit(this.typecontainer.id);
-    this.typecontainer = null;
+    let typeid = this.TypeForm.controls['name'].value;
+    typeid = +typeid;
+    this.typedelete.emit(typeid);
   }
   
   

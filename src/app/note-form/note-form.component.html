@@ -6,11 +6,13 @@
 </form>
   <div *ngIf="status==false; else editblock">
     <label for="type">Типы заметок</label>
+    <form [formGroup]="TypeForm" class='container-fluid'>
     <div>
-      <select [(ngModel)]="typecontainer"  class="form-control w-25 mb-5" name="types" id="type">
-        <option *ngFor="let type of typearr" [ngValue]="type"> {{type.name}} </option>
+      <select class="form-control w-25 mb-5" name="types" id="type" formControlName = "name">
+        <option *ngFor="let type of typearr" value="{{type.id}}"> {{type.name}} </option>
       </select>
     </div>
+  </form>
     <input type="button" value="добавление типа" (click)="onEdittype()" class="btn btn-info mt-1">
     <input type="button" value="удаление типа" (click)="onDeletetype()" class="btn btn-danger mt-1">
   </div>

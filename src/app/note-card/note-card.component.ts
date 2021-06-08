@@ -19,10 +19,9 @@ export class NoteCardComponent implements OnInit {
   @Output() noteEdit = new EventEmitter<Note>();
   status = false;
   NoteForm!: FormGroup;
+  TypeForm!: FormGroup;
   type: Type;
   types: Type[];
-  typecontainer: Type;
-  typeindex: number;
   linkedtype!: Type;
   typename: string;
   constructor(private fb: FormBuilder, private httpNoteservice: HttpNoteService) { }
@@ -35,12 +34,17 @@ export class NoteCardComponent implements OnInit {
       editdate: Date,
       type: [null, [Validators.required, Validators.maxLength(100)]],
     }
+    const typecontrols = {
+      name: [null, [Validators.required, Validators.maxLength(100)]]
+    }
+    this.TypeForm = this.fb.group(typecontrols);
     this.getData();
+    console.log(this.inputNote.type);
     this.NoteForm = this.fb.group(controls);
     if (this.inputNote) {
       this.NoteForm.patchValue(this.inputNote);
     }
-    
+
   }
   onDeleteNote() {
     this.noteDelete.emit(this.inputNote.id);
@@ -49,11 +53,12 @@ export class NoteCardComponent implements OnInit {
     this.getData();
     this.status = !this.status;
     if (this.status == false) {
-      if (this.typecontainer == null)
-        this.typecontainer = this.types[0];
       this.NoteForm.controls['editdate'].setValue(new Date);
-      this.NoteForm.controls['type'].setValue(this.typecontainer.id);
+      let typeid = this.TypeForm.controls['name'].value;
+      typeid = +typeid;
+      this.NoteForm.controls['type'].setValue(typeid);
       const note = this.NoteForm.value;
+      console.log(this.NoteForm.value);
       this.noteEdit.emit(note);
     }
   }
@@ -62,8 +67,8 @@ export class NoteCardComponent implements OnInit {
     this.gettypename(this.inputNote.type);
   }
   gettypename(index) {
-    this.typeindex = this.types.findIndex(x => x.id == index);
-    this.typename = this.types[this.typeindex].name;
+    let typeindex = this.types.findIndex(x => x.id == index);
+    this.typename = this.types[typeindex].name;
   }
 
 }

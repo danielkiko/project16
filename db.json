@@ -1,50 +1,48 @@
 {
   "Notes": [
     {
-      "name": "asdads",
-      "maintext": "zxczcxcxz",
-      "date": "2021-06-04T14:31:38.052Z",
-      "editdate": "2021-06-04T14:31:54.400Z",
-      "type": 6,
+      "name": "Сводить погулять",
+      "maintext": "Не забыть сводить погулять в 6 утра",
+      "date": "2021-06-08T18:28:23.774Z",
+      "type": 3,
       "id": 1
     },
     {
-      "name": "купить2",
-      "maintext": "что-то2",
-      "date": "2021-06-04T14:37:26.520Z",
-      "editdate": "2021-06-04T14:37:47.977Z",
-      "type": 4,
+      "name": "Помыть посуду",
+      "maintext": "Помочь жене помыть посуду, а то убьёт",
+      "date": "2021-06-08T18:28:50.437Z",
+      "type": 2,
       "id": 2
+    },
+    {
+      "name": "Купить хлеб",
+      "maintext": "Купить хлеб.",
+      "date": "2021-06-08T18:29:08.508Z",
+      "editdate": "2021-06-08T18:38:12.217Z",
+      "type": 3,
+      "id": 3
     }
   ],
   "Types": [
     {
-      "name": "zxczxczxczxczxczxczxczxc",
+      "name": "Покупки",
       "id": 1
     },
     {
-      "name": "zxczxasdasfasf",
+      "name": "Семья",
+      "id": 2
+    },
+    {
+      "name": "Собака",
       "id": 3
     },
     {
-      "name": "zxczxasdasfasfzxczxc",
+      "name": null,
       "id": 4
     },
     {
-      "name": "asdas",
+      "name": "",
       "id": 5
-    },
-    {
-      "name": "asdas",
-      "id": 6
-    },
-    {
-      "name": "asdasasdasdas",
-      "id": 7
-    },
-    {
-      "name": "покупки",
-      "id": 8
     }
   ]
 }

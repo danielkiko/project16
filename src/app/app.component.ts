@@ -30,6 +30,7 @@ export class AppComponent {
 
   async onAddNote(e: Note) {
     try {
+      console.log(e);
       await this.httpNoteService.postNote(e);
     } catch (err) {
       console.log(err);
