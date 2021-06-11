@@ -14,79 +14,79 @@ import { HttpNoteService } from './shared/services/http-note.service';
 })
 export class AppComponent {
   title = 'project15';
-  notes!: Note[];
-  types!: Type[];
-  // typename:string;
-  // typeindex:number;
-  NoteForm!: FormGroup;
-  constructor(private httpNoteService: HttpNoteService) {
-  }
-
-
-  ngOnInit(): void {
-    this.getData();
-  }
-
-
-  async onAddNote(e: Note) {
-    try {
-      console.log(e);
-      await this.httpNoteService.postNote(e);
-    } catch (err) {
-      console.log(err);
-    }
-    this.getData();
-  }
-
-  // onSelectType(index:number)
-  // {
-  //   this.typeindex=this.types.findIndex(x=>x.id == index);
-  //   this.typename = this.types[this.typeindex].name
-  //   console.log(this.types[this.typeindex].name)
+  // notes!: Note[];
+  // types!: Type[];
+  // // typename:string;
+  // // typeindex:number;
+  // NoteForm!: FormGroup;
+  // constructor(private httpNoteService: HttpNoteService) {
   // }
 
-  async onAddType(e:Type) {
-    try {
-      await this.httpNoteService.postType(e);
-    } catch (err) {
-      console.log(err);
-    }
-    this.getData();
-  }
 
-  async onDeleteNote(index: number) {
-    try {
-      await this.httpNoteService.deleteNote(index);
-    } catch (err) {
-      console.log(err);
-    }
-    this.getData();
-  }
-  async onDeleteType(index: number) {
-    try {
-      await this.httpNoteService.deleteType(index);
-    } catch (err) {
-      console.log(err);
-    }
-    this.getData();
-  }
-  async onEditNote(index: number, note: Note) {
-    try {
-      await this.httpNoteService.updateNote(index, note);
-      this.getData();
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // ngOnInit(): void {
+  //   this.getData();
+  // }
 
-  async getData() {
-    try {
-      this.notes = await this.httpNoteService.getNotes();
-      this.types = await this.httpNoteService.getTypes();
+
+  // async onAddNote(e: Note) {
+  //   try {
+  //     console.log(e);
+  //     await this.httpNoteService.postNote(e);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   this.getData();
+  // }
+
+  // // onSelectType(index:number)
+  // // {
+  // //   this.typeindex=this.types.findIndex(x=>x.id == index);
+  // //   this.typename = this.types[this.typeindex].name
+  // //   console.log(this.types[this.typeindex].name)
+  // // }
+
+  // async onAddType(e:Type) {
+  //   try {
+  //     await this.httpNoteService.postType(e);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   this.getData();
+  // }
+
+  // async onDeleteNote(index: number) {
+  //   try {
+  //     await this.httpNoteService.deleteNote(index);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   this.getData();
+  // }
+  // async onDeleteType(index: number) {
+  //   try {
+  //     await this.httpNoteService.deleteType(index);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   this.getData();
+  // }
+  // async onEditNote(index: number, note: Note) {
+  //   try {
+  //     await this.httpNoteService.updateNote(index, note);
+  //     this.getData();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  // async getData() {
+  //   try {
+  //     this.notes = await this.httpNoteService.getNotes();
+  //     this.types = await this.httpNoteService.getTypes();
       
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 }
 

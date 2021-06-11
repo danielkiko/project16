@@ -1,0 +1,41 @@
+<form [formGroup]="TypeForm" (ngSubmit)="onAddType()">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="form-group">
+          <label for="name">Имя типа</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Имя"
+            formControlName="name"
+            [ngClass]="{
+              'has-error':
+              TypeForm.get('name')?.invalid &&
+              TypeForm.get('name')?.touched
+            }"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+          <button
+            (click)="onAddType()"
+            class="btn btn-primary"
+            [disabled]="TypeForm.invalid"
+            
+          >
+            Сохранить
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger ms-2"
+            *ngIf="id"
+            (click)="delete()"
+          >
+            Удалить
+          </button>
+        </div>
+      </div>
+    </form>

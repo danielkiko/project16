@@ -1,4 +1,14 @@
-<div class="container">
+<header>
+  <app-header></app-header>
+</header>
+<div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+
+<!-- <div class="container">
   <app-note-form (noteAdd)="onAddNote($event)" (typeAdd)="onAddType($event)"  (typedelete)="onDeleteType($event)"
     [typearr]="types"></app-note-form>
   <div class="row">
@@ -6,13 +16,5 @@
       (noteDelete)="onDeleteNote($event)" (noteEdit)="onEditNote(note.id,$event)" (typeAdd)="onAddType($event)" [typename]="typename">
     </app-card-form>
   </div>
-</div>
+</div> -->
 
-
-<!-- 
-
-<select>
-  <option [ngValue]="option.id" *ngFor="let option of some">
-    {{option.value}}
-  </option>
-</select> -->

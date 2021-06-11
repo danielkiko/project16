@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NoteFormComponent } from '../note-form/note-form.component';
 import { Note } from '../shared/interfaces/note.interface';
 import { Type } from '../shared/interfaces/type.interface';
@@ -15,60 +16,46 @@ import { HttpNoteService } from '../shared/services/http-note.service';
 })
 export class NoteCardComponent implements OnInit {
   @Input() inputNote!: Note;
-  @Output() noteDelete = new EventEmitter<number>();
-  @Output() noteEdit = new EventEmitter<Note>();
+  notes:Note[];
   status = false;
-  NoteForm!: FormGroup;
-  TypeForm!: FormGroup;
   type: Type;
   types: Type[];
   linkedtype!: Type;
   typename: string;
-  constructor(private fb: FormBuilder, private httpNoteservice: HttpNoteService) { }
+  id: number | null = null;
+  note:Note;
+  constructor(
+     private httpNoteservice: HttpNoteService,
+     private router: Router
+     ) { }
 
   ngOnInit(): void {
-    const controls = {
-      name: [null, [Validators.required, Validators.maxLength(100)]],
-      maintext: [null, [Validators.required, Validators.maxLength(100)]],
-      date: Date,
-      editdate: Date,
-      type: [null, [Validators.required, Validators.maxLength(100)]],
-    }
-    const typecontrols = {
-      name: [null, [Validators.required, Validators.maxLength(100)]]
-    }
-    this.TypeForm = this.fb.group(typecontrols);
     this.getData();
-    console.log(this.inputNote.type);
-    this.NoteForm = this.fb.group(controls);
-    if (this.inputNote) {
-      this.NoteForm.patchValue(this.inputNote);
+  }
+  linkToItem(id?: number){
+    if (id) {
+      this.router.navigate([this.router.url,'note',id]);
+    } else {
+      this.router.navigate([this.router.url,'note']);
     }
-
   }
-  onDeleteNote() {
-    this.noteDelete.emit(this.inputNote.id);
-  }
-  async onEditNote() {
+  async onDeleteNote() {
+    // try {
+    //   await this.httpNoteservice.deleteNote(note.id);
+    // } catch (err) {
+    //   console.log(err);
+    // }
     this.getData();
-    this.status = !this.status;
-    if (this.status == false) {
-      this.NoteForm.controls['editdate'].setValue(new Date);
-      let typeid = this.TypeForm.controls['name'].value;
-      typeid = +typeid;
-      this.NoteForm.controls['type'].setValue(typeid);
-      const note = this.NoteForm.value;
-      console.log(this.NoteForm.value);
-      this.noteEdit.emit(note);
-    }
   }
+  
   async getData() {
+    this.notes = await this.httpNoteservice.getNotes();
     this.types = await this.httpNoteservice.getTypes();
     this.gettypename(this.inputNote.type);
   }
   gettypename(index) {
-    let typeindex = this.types.findIndex(x => x.id == index);
-    this.typename = this.types[typeindex].name;
+    let typeindex = this.types.find(x => x.id == index);
+    this.typename = typeindex.name;
   }
 
 }
