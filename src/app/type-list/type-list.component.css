@@ -1,4 +1,5 @@
-tr:hover{
+tbody tr:hover{
     cursor: pointer;
-
+    background-color: thistle;
 }
+

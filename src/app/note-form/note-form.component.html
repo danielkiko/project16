@@ -1,18 +1,20 @@
-<form [formGroup]="NoteForm" class='container-fluid'>
-  <div><input type="text" name="notetitle" class="form-control w-100" formControlName="name">
+<form [formGroup]="NoteForm"(ngSubmit)="onAddNote()" class='container-fluid'>
+  <div><input type="text" name="notetitle" class="form-control w-100 mt-5" formControlName="name">
   </div>
-  <div><textarea name="maintext" id="1" cols="30" rows="10" class="w-100" formControlName="maintext"></textarea>
+  <div class="mt-3 "><textarea name="maintext" id="1" cols="30" rows="10" class="w-100 form-control" formControlName="maintext"></textarea>
   </div>
 </form>
-<div>
+<div class="col mt-2">
   <label for="type">Типы заметок</label>
-  <form [formGroup]="TypeForm" class='container-fluid'>
+  <form [formGroup]="TypeForm">
     <div>
       <select class="form-control w-25 mb-5" name="types" id="type" formControlName="name">
-        <option *ngFor="let type of typearr" value="{{type.id}}"> {{type.name}} </option>
+        <option *ngFor="let type of typearr" [ngValue]="type.id"> {{type.name}} </option>
       </select>
     </div>
   </form>
 </div>
+<div class="col">
 <input type="button" value="Сохранить заметку" (click)="onAddNote()" class="btn btn-primary">
-<input type="button" value="Удалить заметку"  (click)="delete()"class="btn btn-danger"*ngIf="id">
+<input type="button" value="Удалить заметку"  (click)="delete()"class="btn btn-danger ml-3"*ngIf="id">
+</div>

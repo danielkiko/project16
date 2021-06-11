@@ -11,6 +11,8 @@ import { NoteLayoutComponent } from './shared/components/note-layout/note-layout
 import { HeaderComponent } from './shared/components/header/header.component';
 import { TypeListComponent } from './type-list/type-list.component';
 import { TypeFormComponent } from './type-form/type-form.component';
+import { InformationComponent } from './shared/components/information/information.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
 
 
 
@@ -24,6 +26,8 @@ import { TypeFormComponent } from './type-form/type-form.component';
     HeaderComponent,
     TypeListComponent,
     TypeFormComponent,
+    InformationComponent,
+    ContactComponent,
     
   ],
   imports: [

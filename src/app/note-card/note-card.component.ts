@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NoteFormComponent } from '../note-form/note-form.component';
 import { Note } from '../shared/interfaces/note.interface';
 import { Type } from '../shared/interfaces/type.interface';
 import { HttpNoteService } from '../shared/services/http-note.service';
@@ -15,14 +13,11 @@ import { HttpNoteService } from '../shared/services/http-note.service';
   styleUrls: ['./note-card.component.css']
 })
 export class NoteCardComponent implements OnInit {
-  @Input() inputNote!: Note;
   notes:Note[];
-  status = false;
   type: Type;
   types: Type[];
   linkedtype!: Type;
   typename: string;
-  id: number | null = null;
   note:Note;
   constructor(
      private httpNoteservice: HttpNoteService,
@@ -39,23 +34,22 @@ export class NoteCardComponent implements OnInit {
       this.router.navigate([this.router.url,'note']);
     }
   }
-  async onDeleteNote() {
-    // try {
-    //   await this.httpNoteservice.deleteNote(note.id);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    this.getData();
+  userTrackBy(index, note) {
+    console.log(note.id);
   }
   
   async getData() {
     this.notes = await this.httpNoteservice.getNotes();
     this.types = await this.httpNoteservice.getTypes();
-    this.gettypename(this.inputNote.type);
+    console.log(this.note);
   }
   gettypename(index) {
     let typeindex = this.types.find(x => x.id == index);
-    this.typename = typeindex.name;
+    return (typeindex.name);
+  }
+  identify(index, item) {
+    console.log(item.type);
+
   }
 
 }

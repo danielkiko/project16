@@ -46,11 +46,12 @@ export class NoteFormComponent implements OnInit {
     if (this.id) {
       this.NoteForm.controls['editdate'].setValue(new Date);
       let typeid = this.TypeForm.controls['name'].value;
-      typeid = +typeid;
+      console.log(typeof(typeid));
       this.NoteForm.controls['type'].setValue(typeid);
       const note: Note = this.NoteForm.value;
+      console.log(note);
       try {
-        const noteResult = await this.httpNoteservice.updateNote(this.id, note);
+        await this.httpNoteservice.updateNote(this.id, note);
         await this.getdata();
       } catch (err) {
         console.log(err);
@@ -59,7 +60,6 @@ export class NoteFormComponent implements OnInit {
     } else {
       this.NoteForm.controls['date'].setValue(new Date);
       let typeid = this.TypeForm.controls['name'].value;
-      typeid = +typeid;
       this.NoteForm.controls['type'].setValue(typeid);
       const note: Note = this.NoteForm.value;
       try {
@@ -88,6 +88,7 @@ export class NoteFormComponent implements OnInit {
     if (this.id) {
       try {
         this.note = await this.httpNoteservice.getNote(this.id);
+        this.TypeForm.controls['name'].setValue(this.note.type);
       } catch (error) {
         console.log(error);
       }
