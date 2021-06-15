@@ -26,7 +26,7 @@ export class NoteFormComponent implements OnInit {
   typecontainer: Type;
   linkedtype!: Type;
   typename: string;
-  id?: number | null = null
+  id?: number | null = null;
   note: Note;
 
 

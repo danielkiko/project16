@@ -18,7 +18,7 @@ export class NoteCardComponent implements OnInit {
   types: Type[];
   linkedtype!: Type;
   typename: string;
-  note:Note;
+  
   constructor(
      private httpNoteservice: HttpNoteService,
      private router: Router
@@ -34,22 +34,18 @@ export class NoteCardComponent implements OnInit {
       this.router.navigate([this.router.url,'note']);
     }
   }
-  userTrackBy(index, note) {
-    console.log(note.id);
-  }
+  
   
   async getData() {
     this.notes = await this.httpNoteservice.getNotes();
+    console.log(this.notes);
     this.types = await this.httpNoteservice.getTypes();
-    console.log(this.note);
+    
+    
   }
-  gettypename(index) {
-    let typeindex = this.types.find(x => x.id == index);
-    return (typeindex.name);
-  }
-  identify(index, item) {
-    console.log(item.type);
-
+  gettypename(index: number) {
+    let typeindex = this.types?.find(x => x.id == index);
+    return (typeindex?.name);
   }
 
 }
